@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lbl.mapper.QuestionMapper">
+	<insert id="addQuestion" parameterType="lbl.entry.Question">
+		insert into questionbank(title,A,B,C,D,answer )
+		values (#{title},#{A},#{B},#{C},#{D},#{answer} )
+	</insert>
+
+	<select id="query" resultType="lbl.entry.Question">
+
+		select *from questionbank
+
+	</select>
+	<select id="queryById" resultType="lbl.entry.Question">
+
+		select *from questionbank where id = #{id}
+
+	</select>
+	
+	
+	<insert id="nextQuestion" parameterType="java.lang.String">
+	INSERT INTO credit VALUE(#{id},NOW(),1,'背近代史')ON DUPLICATE KEY UPDATE reward=reward+1
+	</insert>
+	
+	
+
+</mapper>
